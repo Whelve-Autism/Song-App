@@ -16,11 +16,7 @@ public class Artist {
     //TODO Add the constructor, Artist(String, boolean), that adheres to the above validation rules.
     public Artist(String artistName, boolean verified) {
         // Truncate the artist name to 15 characters if it exceeds that length
-        if (artistName.length() > 15) {
-            this.artistName = artistName.substring(0, 15);
-        } else {
-            this.artistName = artistName;
-        }
+        setArtistName(artistName);
         this.verified = verified;
     }
 
@@ -33,7 +29,7 @@ public class Artist {
         if (artistName.length() <= 15) {
             this.artistName = artistName;
         } else {
-            this.artistName = artistName.substring(0, 15);
+            this.artistName = artistName.substring(0, 14) + "X";
         }
     }
 
