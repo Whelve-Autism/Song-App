@@ -1,7 +1,5 @@
 package models;
 
-import models.Artist;
-import models.Song;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -11,19 +9,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SongTest {
     private Song validSong1, validSong2, validSong3, validSong4, invalidSong1, invalidSong2;
-    private Artist artist1, artist2;
+    private Artist artist1;
+    private Artist artist2;
 
     @BeforeEach
     void setUp() {
-        validSong1 = new Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
-        validSong2 = new Song(9999, "Calm Down", "Rema", false, 600);
-        validSong3 = new Song(1000, "12345678901234567890", "123456789012345", true, 1);
-        validSong4 = new Song(998, "", "", true, 599);
-        invalidSong1 = new Song(999, "12345678901234567890123", "12345678901234567", false, 0);
-        invalidSong2 = new Song(998, "12345678901234567890123567890", "12345678901234567890", false, -1);
-
-        artist1 = new Artist("1234567890123", true);
-        artist2 = new Artist("12345", false);
+        artist1 = new Artist("Taylor Swift", true);
+        artist2 = new Artist("Rema", false);
+        Artist artist3 = new Artist("123456789012345", false);
+        Artist artist4 = new Artist("", false);
+        Artist invalidArtist1 = new Artist("", false);
+        Artist invalidArtist2 = new Artist("", false);
+        validSong1 = new Song(1500, "Anti-Hero", artist1, 123);
+        validSong2 = new Song(9999, "Calm Down", artist2, 600);
+        validSong3 = new Song(1000, "12345678901234567890", artist3, 1);
+        validSong4 = new Song(998, "", artist4, 599);
+        invalidSong1 = new Song(999, "12345678901234567890123", invalidArtist1, 0);
+        invalidSong2 = new Song(998, "12345678901234567890123567890", invalidArtist2, -1);
     }
 
 
@@ -39,14 +41,17 @@ public class SongTest {
         @Test
         void constructorTestingTheSettingOfDefaultValues() {
             //testing invalid values (lower boundary) for each variable at constructor level
-            Song lowerBounds = new Song(999, "", "", true, 0);
+            Artist artist5 = new Artist("", true);
+//            Song lowerBounds = new Song(999, "", "", 0);
+              Song lowerBounds = new Song(999, "", artist5, 0);
             Artist songArtistLower = new Artist("", true);
             assertEquals(9999, lowerBounds.getSongId());
-            assertEquals("", lowerBounds.getName());  //
+            assertEquals("", lowerBounds.getName());
             assertEquals(songArtistLower, lowerBounds.getArtist());
-
             assertEquals(1, lowerBounds.getLength());
-            Song upperBounds = new Song(10000, "123456789012345678901", "1234567890123456", true, 601);
+            Artist artist6 = new Artist("1234567890123456", true);
+//            Song upperBounds = new Song(10000, "123456789012345678901", "1234567890123456", 601);
+            Song upperBounds = new Song(10000, "123456789012345678901", artist6, 601);
             //testing invalid values (upper boundary) for each variable at constructor level
             Artist songArtistUpper = new Artist("1234567890123456", true);
             assertEquals(9999, upperBounds.getSongId());
@@ -58,7 +63,9 @@ public class SongTest {
         @Test
         void constructorTestingValidValues() {
             //testing for values that lie on the lower boundary.
-            Song lowerBounds = new Song(1000, "", "", true, 1);
+            Artist artist7 = new Artist("", true);
+//            Song lowerBounds = new Song(1000, "", "", 1);
+            Song lowerBounds = new Song(1000, "", artist7, 1);
             assertEquals(1000, lowerBounds.getSongId());
             assertEquals("", lowerBounds.getName());  // exactly 20 chars
             assertEquals(new Artist("", true), lowerBounds.getArtist());
@@ -66,10 +73,11 @@ public class SongTest {
             // models.Song
 
             //testing for values that lie on the upper boundary.
-            Song upperBounds = new Song(9999, "12345678901234567890", "123456789012345", true, 600);
+            Artist artist8 = new Artist("123456789012345", true);
+//            Song upperBounds = new Song(9999, "12345678901234567890", "123456789012345", 600);
+            Song upperBounds = new Song(9999, "12345678901234567890", artist8, 600);
             assertEquals(9999, upperBounds.getSongId());
             assertEquals("12345678901234567890", upperBounds.getName());  // exactly 20 chars
-
             assertEquals(600, upperBounds.getLength());
         }
     }
@@ -100,7 +108,6 @@ public class SongTest {
 
         @Test
         void songNameGetAndSetWorkingCorrectly() {
-
             assertEquals("Anti-Hero", validSong1.getName());
             validSong1.setName("1234567890123456789"); // valid - just below upper  boundary
             assertEquals("1234567890123456789", validSong1.getName());
@@ -108,7 +115,6 @@ public class SongTest {
             assertEquals("12345678901234567890", validSong1.getName());
             validSong1.setName("123456789012345678901"); // invalid  - just above upper boundary -  should remain unchanged
             assertEquals("12345678901234567890", validSong1.getName());
-
         }
 
 
@@ -127,42 +133,39 @@ public class SongTest {
             assertEquals(2, validSong1.getLength());
             validSong1.setLength(1);// valid - just on lower  boundary
             assertEquals(1, validSong1.getLength());
-
             validSong1.setLength(123);  // to original value
             validSong1.setLength(0);   // invalid  - just below  lower  boundary -  should remain unchanged
             assertEquals(123, validSong1.getLength());
-
         }
         @Test
         void songArtistGetAndSetWorkingCorrectly() {
-            Song artistSong1 = new Song(1500, "Cool song name", artist1.getArtistName(), artist1.isVerified(), 15);
+//            Song artistSong1 = new Song(1500, "Cool song name", artist1.getArtistName(), 15);
+            Song artistSong1 = new Song(1500, "Cool song name", artist1, 15);
             assertEquals(artist1, artistSong1.getArtist());
             artistSong1.setArtist(artist2);
             assertEquals(artist2, artistSong1.getArtist());
-
         }
-
     }
     @Nested
     class ToString {
-        //  validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
+//          validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
         @Test
         void toStringContainsAllFieldsInObject() {
-            //  validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
+//              validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", 123);
+              validSong1 = new models.Song(1500, "Anti-Hero", artist1, 123);
             assertTrue(validSong1.toString().contains("1500"));
             assertTrue(validSong1.toString().contains("Anti-Hero"));
             assertTrue(validSong1.toString().contains("Taylor Swift"));
             assertTrue(validSong1.toString().contains("is a verified artist"));
             assertTrue(validSong1.toString().contains("123"));
 
-            //  validSong2 = new models.Song(9999, "Calm Down", "Rema", false, 600);
+//              validSong2 = new models.Song(9999, "Calm Down", "Rema", 600);
+              validSong2 = new models.Song(9999, "Calm Down", artist2, 600);
             assertTrue(validSong2.toString().contains("9999"));
             assertTrue(validSong2.toString().contains("Calm Down"));
             assertTrue(validSong2.toString().contains("Rema"));
             assertTrue(validSong2.toString().contains("is not a verified artist"));
             assertTrue(validSong2.toString().contains("600"));
-
-
         }
     }
 }
