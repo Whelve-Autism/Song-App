@@ -80,5 +80,4 @@ public class ScannerInput {
         System.out.print(prompt);
         return input.next().charAt(0);
     }
-
 }
