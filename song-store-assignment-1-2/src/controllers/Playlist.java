@@ -21,6 +21,12 @@ public class Playlist {
      */
     private boolean playlistNameSet = false;
 
+    /*
+      新增判断：验证 addLikeSet 是否被设置过，使得 PlaylistTest 成功编译。
+      New judgment: Verify whether addLikeSet has been set, so that PlaylistTest can be successfully compiled.
+     */
+    private boolean addLikeSet = false;
+
     //TODO Declare an array list of songs(songs).
     //     This should be empty at the start and does not need to be the constructor.
 
@@ -97,10 +103,13 @@ public class Playlist {
     }
 
     public void setLikes(int likes) {
-        if (likes >= 0) {
-            this.likes = likes;
+        if (!addLikeSet) {
+            this.likes = Math.max(likes, 0);
+            addLikeSet = true;
         } else {
-            this.likes = getLikes();
+            if (likes >= 0) {
+                this.likes = likes;
+            }
         }
     }
 
