@@ -170,9 +170,7 @@ public class Driver {
         String artistName = ScannerInput.readNextLine("Enter artist name: ");
         boolean verified = ScannerInput.readNextChar("Is the artist verified? (y/n): ") == 'y';
         int length = ScannerInput.readNextInt("Enter song length (1-600): ");
-
-        Artist artist = new Artist(artistName, verified);
-        Song song = new Song(songId, name, artist, length);
+        Song song = new Song(songId, name, artistName, verified, length);
 
         if (playlist.addSong(song)) {
             System.out.println("Song added successfully.");
@@ -236,7 +234,7 @@ public class Driver {
         }
 
         Artist artist = new Artist(artistName, verified);
-        Song song = new Song(songId, name, artist, length);
+        Song song = new Song(songId, name, artistName, verified, length);
 
         playlist.updateSong(index, song);
         System.out.println("Song updated successfully.");

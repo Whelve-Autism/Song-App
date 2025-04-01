@@ -35,22 +35,15 @@ public class Song {
     //     Default is 1.
     private int length = 1;
 
-    //TODO Add the constructor, Song(int, String, Artist), that adheres to the above validation rules.
-    public Song(int songId, String name, Artist artist, int length) {
-        setSongId(songId);
-        setName(name);
-        setArtist(artist);
-        setLength(length);
-    }
-
     /*
-      题目勘误：新增 Song(int, String, String, int) 构造函数，使得 SongTest 成功编译。
-      Title error: The new constructor Song(int, String, String, int) is added to compile SongTest.
+      题目勘误：修改为 String 类型变量 artistName，用于存储 artistName 字段，使得 SongTest 成功编译。
+      Title error: The new string variable artistName is added to store the artistName field, so that SongTest can be successfully compiled.
      */
-    public Song(int songId, String name, String artistName, int length) {
+    //TODO Add the constructor, Song(int, String, Artist), that adheres to the above validation rules.
+    public Song(int songId, String name, String artistName, boolean verified, int length) {
         setSongId(songId);
         setName(name);
-        setArtistName(artistName);
+        setArtist(new Artist(artistName, verified));
         setLength(length);
     }
 
@@ -75,14 +68,6 @@ public class Song {
         } else {
             this.name = name.substring(0, 20);
         }
-    }
-
-    public Artist getArtist() {
-        return artist;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
     }
 
     /*
@@ -113,6 +98,14 @@ public class Song {
         if (length >= 1 && length <= 600) {
             this.length = length;
         }
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     //TODO Add a generated equals method.
@@ -148,7 +141,6 @@ public class Song {
         return songId == song.songId &&
                 length == song.length &&
                 Objects.equals(name, song.name) &&
-                Objects.equals(artist, song.artist) &&
                 Objects.equals(artistName, song.artistName) &&
                 verified == song.verified;
     }
@@ -156,6 +148,11 @@ public class Song {
     //TODO The toString should return the string containing each of the field values including the use of the artist's toString()
     @Override
     public String toString() {
-        return "Song{" + "songId=" + songId + ", name='" + name + '\'' + ", " + artist + ", length=" + length + '}';
+        return "Song{" +
+                "\n    songId=" + songId +
+                ",\n    name='" + name + '\'' +
+                ",\n    artist=" + artist +
+                ",\n    length=" + length +
+                "\n}";
     }
 }

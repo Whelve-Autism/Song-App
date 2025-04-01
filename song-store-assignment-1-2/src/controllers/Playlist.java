@@ -144,7 +144,7 @@ public class Playlist {
                 return false;
             }
 
-            if (song.getArtistName().length() > 15) {
+            if (song.getArtist().getArtistName().length() > 15) {
                 return false;
             }
 
@@ -357,7 +357,7 @@ public class Playlist {
                     .append(", artistName='").append(song.getArtist().getArtistName()).append('\'')
                     .append(", length=").append(song.getLength()).append("}\n");
         }
-        return "Songs from playlist :" + builder.toString().trim();
+        return "Songs from playlist :" + playlistName + builder.toString().trim();
     }
 
     //TODO Add a method, listSongsFromVerifiedArtists().
@@ -377,8 +377,9 @@ public class Playlist {
         boolean isVerifiedSong = false;
 
         for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i) != null && songs.get(i).getArtist() != null && songs.get(i).getArtist().isVerified()) {
-                builder.append(i).append(": ").append(songs.get(i).toString()).append("\n");
+            Song song = songs.get(i);
+            if (song != null && song.getArtist() != null && song.getArtist().isVerified()) {
+                builder.append(i).append(": ").append(song.toString()).append("\n");
                 isVerifiedSong = true;
             }
         }
@@ -389,6 +390,7 @@ public class Playlist {
             return "There are no songs from verified artists on this playlist";
         }
     }
+
 
     //TODO Add a method, listSongsLongerThan(int).
     //     The return type is String.
@@ -412,7 +414,7 @@ public class Playlist {
             if (song.getLength() >= length) {
                 builder.append(i).append(": Song{songId=").append(song.getSongId())
                         .append(", name='").append(song.getName()).append('\'')
-                        .append(", artistName='").append(song.getArtistName()).append('\'')
+                        .append(", artistName='").append(song.getArtist().getArtistName()).append('\'')
                         .append(", length=").append(song.getLength()).append("}\n");
                 isLongerSong = true;
             }
@@ -454,7 +456,7 @@ public class Playlist {
         if (isArtistSong) {
             return builder.toString().trim();
         } else {
-            return "There are no songs on this playlist by " + artistName;
+            return "There are no  songs on this playlist by " + artistName;
         }
     }
 

@@ -20,6 +20,7 @@ public class ArtistTest {
     @AfterEach
     void tearDown() {
         validArtist1 = invalidArtist1 = null;
+
     }
 
     @Nested
@@ -43,6 +44,7 @@ public class ArtistTest {
             assertTrue(validArtist1.isVerified());
             Artist notVerified = new Artist("does not matter", false);
             assertFalse(notVerified.isVerified());
+
         }
     }
 
@@ -56,10 +58,9 @@ public class ArtistTest {
             assertEquals("12345678901234X", validArtist1.getArtistName()); //change should be made
             validArtist1.setArtistName("1234567890123456"); // too long should not be changed
             assertEquals("12345678901234X", validArtist1.getArtistName());
-            validArtist1.setArtistName(""); // should be changed
+            validArtist1.setArtistName(""); // should  be changed
             assertEquals("", validArtist1.getArtistName());
         }
-
         @Test
         void artistVerifiedGetAndSetWorkingCorrectly() {
             assertTrue(validArtist1.isVerified());
@@ -67,18 +68,21 @@ public class ArtistTest {
             assertFalse(validArtist1.isVerified());
             validArtist1.setVerified(true);
             assertTrue(validArtist1.isVerified());
+
         }
     }
-
     @Nested
     class ToString {
 
         @Test
         void toStringContainsAllFieldsInObject() {
             assertTrue(validArtist1.toString().contains("123456789012345"));
+
             assertTrue(validArtist1.toString().contains(" is a verified artist"));
             validArtist1.setVerified(false);
             assertTrue(validArtist1.toString().contains(" is not a verified artist"));
+
         }
+
     }
 }
