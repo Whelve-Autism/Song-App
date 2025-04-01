@@ -203,42 +203,27 @@ public class Driver {
             return;
         }
 
-        int songId = ScannerInput.readNextInt("Enter new song ID (1000-9999): ");
+        Song existingSong = playlist.getSongs().get(index);
 
-        if (songId < 1000 || songId > 9999) {
-            System.out.println("Invalid song ID, so keep the original value.");
-            return;
-        }
+        int songId = ScannerInput.readNextInt("Enter new song ID (1000-9999): ");
+        existingSong.setSongId(songId);
 
         String name = ScannerInput.readNextLine("Enter new song name: ");
-
-        if (name.length() > 20) {
-            System.out.println("Invalid song name, so keep the original value.");
-            return;
-        }
+        existingSong.setName(name);
 
         String artistName = ScannerInput.readNextLine("Enter new artist name: ");
+        existingSong.getArtist().setArtistName(artistName);
 
-        if (artistName.length() > 15) {
-            System.out.println("Invalid artist name, so keep the original value.");
-            return;
-        }
+        boolean verified = ScannerInput.readNextChar("Is the artist verified? (y/n): ") == 'y';
+        existingSong.getArtist().setVerified(verified);
 
-        Song existingSong = playlist.getSongs().get(index);
-        boolean verified = existingSong.isVerified();
         int length = ScannerInput.readNextInt("Enter new song length (1-600): ");
+        existingSong.setLength(length);
 
-        if (length <= 0 || length > 600) {
-            System.out.println("Invalid song length, so keep the original value.");
-            return;
-        }
-
-        Artist artist = new Artist(artistName, verified);
-        Song song = new Song(songId, name, artistName, verified, length);
-
-        playlist.updateSong(index, song);
+        playlist.updateSong(index, existingSong);
         System.out.println("Song updated successfully.");
     }
+
 
 
     /*

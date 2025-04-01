@@ -155,7 +155,7 @@ public class Playlist {
             if (songToUpdate.getSongId() == song.getSongId() &&
                     songToUpdate.getName().equals(song.getName()) &&
                     songToUpdate.getLength() == song.getLength() &&
-                    songToUpdate.getArtistName().equals(song.getArtistName())) {
+                    songToUpdate.getArtist().getArtistName().equals(song.getArtist().getArtistName())) {
                 return false;
             } else {
                 songs.set(index, song);
