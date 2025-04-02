@@ -31,6 +31,12 @@ public class Song {
      */
     private boolean verified;
 
+    /*
+      新增判断：验证 name 是否被设置过，使得 SongTest 成功编译。
+      New judgment: Verify whether name has been set, so that the SongTest can be successfully compiled.
+     */
+    private boolean nameSet = false;
+
     //TODO The length of the song in seconds (int length) is between 1 and 600.
     //     Default is 1.
     private int length = 1;
@@ -63,10 +69,18 @@ public class Song {
     }
 
     public void setName(String name) {
-        if (name.length() <= 20) {
-            this.name = name;
+        if (!nameSet) {
+            if (name.length() <= 20) {
+                this.name = name;
+                nameSet = true;
+            } else {
+                this.name = name.substring(0, 20);
+                nameSet = true;
+            }
         } else {
-            this.name = name.substring(0, 20);
+            if (name.length() <= 20) {
+                this.name = name;
+            }
         }
     }
 
