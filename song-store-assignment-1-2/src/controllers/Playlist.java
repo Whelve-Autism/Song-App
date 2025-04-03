@@ -357,7 +357,7 @@ public class Playlist {
                     .append(", artistName='").append(song.getArtist().getArtistName()).append('\'')
                     .append(", length=").append(song.getLength()).append("}\n");
         }
-        return "Songs from playlist :" + playlistName + builder.toString().trim();
+        return "Songs from playlist :" + playlistName + "\n" + builder.toString().trim();
     }
 
     //TODO Add a method, listSongsFromVerifiedArtists().
@@ -379,7 +379,7 @@ public class Playlist {
         for (int i = 0; i < songs.size(); i++) {
             Song song = songs.get(i);
             if (song != null && song.getArtist() != null && song.getArtist().isVerified()) {
-                builder.append(i).append(": ").append(song.toString()).append("\n");
+                builder.append(i).append(": ").append(song).append("\n");
                 isVerifiedSong = true;
             }
         }
