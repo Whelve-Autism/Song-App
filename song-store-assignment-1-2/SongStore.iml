@@ -55,5 +55,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="xstream-1.4.21" level="project" />
   </component>
 </module>

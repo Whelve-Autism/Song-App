@@ -136,16 +136,16 @@ public class SongTest {
         @Test
         void songArtistGetAndSetWorkingCorrectly() {
             Song artistSong1 = new Song(1500, "Cool song name", artist1.getArtistName(), artist1.isVerified(), 15);
-             assertEquals(artist1, artistSong1.getArtist());
-             artistSong1.setArtist(artist2);
-             assertEquals(artist2, artistSong1.getArtist());
+            assertEquals(artist1, artistSong1.getArtist());
+            artistSong1.setArtist(artist2);
+            assertEquals(artist2, artistSong1.getArtist());
 
         }
 
     }
     @Nested
     class ToString {
-//  validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
+        //  validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
         @Test
         void toStringContainsAllFieldsInObject() {
             //  validSong1 = new models.Song(1500, "Anti-Hero", "Taylor Swift", true,  123);
@@ -164,6 +164,5 @@ public class SongTest {
 
 
         }
+    }
 }
-}
-

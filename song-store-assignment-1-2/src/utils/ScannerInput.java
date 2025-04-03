@@ -27,14 +27,20 @@ public class ScannerInput {
     public static int readNextInt(String prompt) {
         do {
             var scanner = new Scanner(System.in);
-            try {
-                System.out.print(prompt);
-                return Integer.parseInt(scanner.next());
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+
+            if (input.isEmpty()) {
+                System.out.println("Skipping the operation.");
+                return -1;
             }
-            catch (NumberFormatException e) {
+
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
                 System.err.println("\tEnter a number please.");
             }
-        }  while (true);
+        } while (true);
     }
 
     /**
@@ -80,5 +86,8 @@ public class ScannerInput {
         System.out.print(prompt);
         return input.next().charAt(0);
     }
-
 }
+/*
+ * End of utils.ScannerInput Class.
+ * Checked by Fan Xinkang on 2025/04/03.
+ */

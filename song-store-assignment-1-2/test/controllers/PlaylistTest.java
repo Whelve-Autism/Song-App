@@ -78,9 +78,9 @@ class PlaylistTest {
         }
         @Test
         void songsGetAndSetWorkingCorrectly() {
-           assertTrue(playList.getSongs().isEmpty());
-           playList.setSongs(songs1);
-           assertEquals(songs1, playList.getSongs());
+            assertTrue(playList.getSongs().isEmpty());
+            playList.setSongs(songs1);
+            assertEquals(songs1, playList.getSongs());
         }
         @Test
         void descriptionGetAndSetWorkingCorrectly() {
@@ -113,8 +113,8 @@ class PlaylistTest {
 
 
 
-        @Test
-        void addLike() {
+    @Test
+    void addLike() {
         assertEquals(0, playList.getLikes());
         playList.addLike();
         assertEquals(1, playList.getLikes());
@@ -123,31 +123,31 @@ class PlaylistTest {
         playList.addLike();
         assertEquals(8, playList.getLikes());
 
-        }
+    }
 
-        @Test
-        void addSong(){
+    @Test
+    void addSong(){
         assertTrue(emptyPlayList.getSongs().isEmpty());
         emptyPlayList.addSong(validSong1);
         assertEquals(validSong1, emptyPlayList.findSong(0));
         emptyPlayList.addSong(validSong2);
         assertEquals(validSong2, emptyPlayList.findSong(1));
-        }
+    }
 
-        @Test
-        void deleteSong(){
-            assertTrue(emptyPlayList.getSongs().isEmpty());
-            assertNull(emptyPlayList.deleteSong(0));   // returns null when index not there
+    @Test
+    void deleteSong(){
+        assertTrue(emptyPlayList.getSongs().isEmpty());
+        assertNull(emptyPlayList.deleteSong(0));   // returns null when index not there
 
-            playList.setSongs(songs1); // we will use a populated arraylist
-            assertEquals(validSong1, playList.deleteSong(0)); // deletes and return deleted object
-            assertEquals(validSong2, playList.findSong(0));  // validSong2 gone to position 0
-            assertEquals(validSong3, playList.deleteSong(1)); // deletes and return deleted object
-            assertEquals(validSong2, playList.findSong(0));
+        playList.setSongs(songs1); // we will use a populated arraylist
+        assertEquals(validSong1, playList.deleteSong(0)); // deletes and return deleted object
+        assertEquals(validSong2, playList.findSong(0));  // validSong2 gone to position 0
+        assertEquals(validSong3, playList.deleteSong(1)); // deletes and return deleted object
+        assertEquals(validSong2, playList.findSong(0));
 
-        }
-        @Test
-        void updateSong(){
+    }
+    @Test
+    void updateSong(){
         playList.setSongs(songs1);
         Song updatedSong =     new Song(445, "Top song", "Fine singer", true, 234);
         playList.updateSong(1, updatedSong);
@@ -157,9 +157,9 @@ class PlaylistTest {
         assertFalse(playList.updateSong(-1, validSong3));
         assertFalse(playList.updateSong(3, validSong3));
 
-        }
-        @Test
-        void listSongs() {
+    }
+    @Test
+    void listSongs() {
         assertTrue(emptyPlayList.listSongs().contains("No songs in playlist."));
         playList.setSongs(songs1);
         assertTrue(playList.listSongs().contains("Songs from playlist :"));
@@ -177,101 +177,101 @@ class PlaylistTest {
         assertTrue(playList.listSongs().contains("12345678901234567890"));
         assertTrue(playList.listSongs().contains("Taylor Swift"));
         assertTrue(playList.listSongs().contains("1"));
-        }
+    }
 
 
-        @Test
-        void listVerifiedSongs() {
-            assertTrue(emptyPlayList.listSongsFromVerifiedArtists().contains("No songs in playlist."));
+    @Test
+    void listVerifiedSongs() {
+        assertTrue(emptyPlayList.listSongsFromVerifiedArtists().contains("No songs in playlist."));
 
-            playList.setSongs(songsNoVerified);
+        playList.setSongs(songsNoVerified);
 
-            assertTrue(playList.listSongsFromVerifiedArtists().contains("There are no songs from verified artists on this playlist"));
+        assertTrue(playList.listSongsFromVerifiedArtists().contains("There are no songs from verified artists on this playlist"));
 
-            playList.setSongs(songs1);
-            assertTrue(playList.listSongsFromVerifiedArtists().contains("Anti-Hero"));
-            assertTrue(playList.listSongsFromVerifiedArtists().contains("Taylor Swift"));
-            assertTrue(playList.listSongsFromVerifiedArtists().contains("12345678901234567890"));
+        playList.setSongs(songs1);
+        assertTrue(playList.listSongsFromVerifiedArtists().contains("Anti-Hero"));
+        assertTrue(playList.listSongsFromVerifiedArtists().contains("Taylor Swift"));
+        assertTrue(playList.listSongsFromVerifiedArtists().contains("12345678901234567890"));
 
-        }
+    }
 
-        @Test
-        void listSongsLongerThan() {
-            ArrayList<Song> songs = new ArrayList<Song>();
+    @Test
+    void listSongsLongerThan() {
+        ArrayList<Song> songs = new ArrayList<Song>();
 
-            songs.add( new Song(1500, "Anti-Hero", "Taylor Swift", true,  123));
-            songs.add(new Song(9999, "Calm Down", "Rema", false, 550));
-            songs.add( new Song(1000, "12345678901234567890", "Taylor Swift", true, 50)) ;
-            playList.setSongs(songs);
+        songs.add( new Song(1500, "Anti-Hero", "Taylor Swift", true,  123));
+        songs.add(new Song(9999, "Calm Down", "Rema", false, 550));
+        songs.add( new Song(1000, "12345678901234567890", "Taylor Swift", true, 50)) ;
+        playList.setSongs(songs);
 
 
-            assertTrue(emptyPlayList.listSongsLongerThan(00).contains("No songs in playlist."));  // check empty list
+        assertTrue(emptyPlayList.listSongsLongerThan(00).contains("No songs in playlist."));  // check empty list
 
-            assertTrue(playList.listSongsLongerThan(560).contains("There are no songs on this playlist longer than :"));  // no songs longer than 560
-            assertTrue(playList.listSongsLongerThan(560).contains("560"));
-            assertTrue(playList.listSongsLongerThan(560).contains("secs"));
+        assertTrue(playList.listSongsLongerThan(560).contains("There are no songs on this playlist longer than :"));  // no songs longer than 560
+        assertTrue(playList.listSongsLongerThan(560).contains("560"));
+        assertTrue(playList.listSongsLongerThan(560).contains("secs"));
 
-            assertTrue(playList.listSongsLongerThan(500).contains("9999"));
-            assertTrue(playList.listSongsLongerThan(500).contains("Calm Down"));
-            assertTrue(playList.listSongsLongerThan(500).contains("Rema"));
-            assertTrue(playList.listSongsLongerThan(500).contains("550"));
+        assertTrue(playList.listSongsLongerThan(500).contains("9999"));
+        assertTrue(playList.listSongsLongerThan(500).contains("Calm Down"));
+        assertTrue(playList.listSongsLongerThan(500).contains("Rema"));
+        assertTrue(playList.listSongsLongerThan(500).contains("550"));
 
-            assertFalse(playList.listSongsLongerThan(500).contains("Anti-Hero"));  //ensure that song length 123 not listed
+        assertFalse(playList.listSongsLongerThan(500).contains("Anti-Hero"));  //ensure that song length 123 not listed
 
-            assertFalse(playList.listSongsLongerThan(500).contains("12345678901234567890"));
+        assertFalse(playList.listSongsLongerThan(500).contains("12345678901234567890"));
 
-            assertTrue(playList.listSongsLongerThan(100).contains("9999"));
-            assertTrue(playList.listSongsLongerThan(100).contains("Calm Down"));
-            assertTrue(playList.listSongsLongerThan(100).contains("Rema"));
-            assertTrue(playList.listSongsLongerThan(100).contains("550"));
+        assertTrue(playList.listSongsLongerThan(100).contains("9999"));
+        assertTrue(playList.listSongsLongerThan(100).contains("Calm Down"));
+        assertTrue(playList.listSongsLongerThan(100).contains("Rema"));
+        assertTrue(playList.listSongsLongerThan(100).contains("550"));
 
-            assertTrue(playList.listSongsLongerThan(100).contains("1500"));
-            assertTrue(playList.listSongsLongerThan(100).contains("Anti-Hero"));
-            assertTrue(playList.listSongsLongerThan(100).contains("Taylor Swift"));
-            assertTrue(playList.listSongsLongerThan(100).contains("123"));
+        assertTrue(playList.listSongsLongerThan(100).contains("1500"));
+        assertTrue(playList.listSongsLongerThan(100).contains("Anti-Hero"));
+        assertTrue(playList.listSongsLongerThan(100).contains("Taylor Swift"));
+        assertTrue(playList.listSongsLongerThan(100).contains("123"));
 
-            assertFalse(playList.listSongsLongerThan(500).contains("12345678901234567890")); //ensure that song length 50 not listed
+        assertFalse(playList.listSongsLongerThan(500).contains("12345678901234567890")); //ensure that song length 50 not listed
 
-            assertFalse(playList.listSongsLongerThan(500).contains("Anti-Hero"));  //ensure that song length 123 not listed
+        assertFalse(playList.listSongsLongerThan(500).contains("Anti-Hero"));  //ensure that song length 123 not listed
 
-            assertFalse(playList.listSongsLongerThan(500).contains("12345678901234567890"));
+        assertFalse(playList.listSongsLongerThan(500).contains("12345678901234567890"));
 
-            assertTrue(playList.listSongsLongerThan(20).contains("12345678901234567890"));
+        assertTrue(playList.listSongsLongerThan(20).contains("12345678901234567890"));
 
-        }
+    }
 
-        @Test
-        void listOfSongsOfArtist() {
-            assertTrue(emptyPlayList.listOfSongsOfArtist("Taylor Swift").contains("No songs in playlist."));  // check empty list
-            playList.setSongs(songs1);
+    @Test
+    void listOfSongsOfArtist() {
+        assertTrue(emptyPlayList.listOfSongsOfArtist("Taylor Swift").contains("No songs in playlist."));  // check empty list
+        playList.setSongs(songs1);
 
-            assertTrue(playList.listOfSongsOfArtist("Taylor Swift").contains("Anti-Hero"));  // check are both songs returned
-            assertTrue(playList.listOfSongsOfArtist("Taylor Swift").contains("12345678901234567890"));
+        assertTrue(playList.listOfSongsOfArtist("Taylor Swift").contains("Anti-Hero"));  // check are both songs returned
+        assertTrue(playList.listOfSongsOfArtist("Taylor Swift").contains("12345678901234567890"));
 
-            assertTrue(playList.listOfSongsOfArtist("Mairead Taylor").contains("There are no  songs on this playlist by"));
-            assertTrue(playList.listOfSongsOfArtist("Mairead Taylor").contains("Mairead Taylor"));
+        assertTrue(playList.listOfSongsOfArtist("Mairead Taylor").contains("There are no  songs on this playlist by"));
+        assertTrue(playList.listOfSongsOfArtist("Mairead Taylor").contains("Mairead Taylor"));
 
-        }
+    }
 
-        @Test
-        void getAverageSongLength() {
+    @Test
+    void getAverageSongLength() {
         playList.setSongs(songs1);
         assertEquals(241, playList.getAverageSongLength());
         assertEquals(-1, emptyPlayList.getAverageSongLength());  // no songs - should return -1
-        }
+    }
 
-        @Test
-        void findSong() {
+    @Test
+    void findSong() {
         playList.setSongs(songs1);
         assertEquals(validSong1, playList.findSong(0));
         assertEquals(validSong2, playList.findSong(1));
         assertEquals(validSong3, playList.findSong(2));
         assertNull(playList.findSong(-1));
         assertNull(playList.findSong(3));
-        }
+    }
 
-        @Test
-        void isValidIndex() {
+    @Test
+    void isValidIndex() {
         playList.setSongs(songs1);
         assertEquals(3, playList.numSongs());
         assertTrue(playList.isValidIndex(0));
@@ -279,25 +279,25 @@ class PlaylistTest {
         assertTrue(playList.isValidIndex(2));
         assertFalse(playList.isValidIndex(-1));
         assertFalse(playList.isValidIndex(playList.numSongs()));
-        }
+    }
 
-        @Test
-        void testToString() {
-            playList.setSongs(songs1);
-            assertTrue(playList.toString().contains("controllers.Playlist Name"));
-            assertTrue(playList.toString().contains("Chill-24"));  //playlist name
-            assertTrue(playList.toString().contains("controllers.Playlist Description"));
-            assertTrue(playList.toString().contains("Chillout songs to study to"));
-            assertTrue(playList.toString().contains("Songs"));
-            assertTrue(playList.toString().contains("Anti-Hero"));// songname
-            assertTrue(playList.toString().contains("Taylor Swift"));// artist name
-            assertTrue(playList.toString().contains("is a verified artist"));//is artist verified
-            assertTrue(playList.toString().contains("Calm Down"));//songname
-            assertTrue(playList.toString().contains("Rema"));//artist name
-            assertTrue(playList.toString().contains("is not a verified artist"));//is artist verified
-            //check empty list
-            assertTrue(emptyPlayList.toString().contains("No songs in playlist."));
+    @Test
+    void testToString() {
+        playList.setSongs(songs1);
+        assertTrue(playList.toString().contains("controllers.Playlist Name"));
+        assertTrue(playList.toString().contains("Chill-24"));  //playlist name
+        assertTrue(playList.toString().contains("controllers.Playlist Description"));
+        assertTrue(playList.toString().contains("Chillout songs to study to"));
+        assertTrue(playList.toString().contains("Songs"));
+        assertTrue(playList.toString().contains("Anti-Hero"));// songname
+        assertTrue(playList.toString().contains("Taylor Swift"));// artist name
+        assertTrue(playList.toString().contains("is a verified artist"));//is artist verified
+        assertTrue(playList.toString().contains("Calm Down"));//songname
+        assertTrue(playList.toString().contains("Rema"));//artist name
+        assertTrue(playList.toString().contains("is not a verified artist"));//is artist verified
+        //check empty list
+        assertTrue(emptyPlayList.toString().contains("No songs in playlist."));
 
-        }
+    }
 
 }
