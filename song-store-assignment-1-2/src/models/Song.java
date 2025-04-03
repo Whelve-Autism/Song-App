@@ -2,6 +2,14 @@ package models;
 
 import java.util.Objects;
 
+/**
+ * 此类用于创建并存储歌曲对象。
+ * This class is used to create and store song objects.
+ *
+ * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @version 4.4
+ * @since version 0.0
+ */
 public class Song {
 
     //TODO The song id (int songId) is between 1000 to 9999(both inclusive).
@@ -46,6 +54,23 @@ public class Song {
       Title error: The new string variable artistName is added to store the artistName field, so that SongTest can be successfully compiled.
      */
     //TODO Add the constructor, Song(int, String, Artist), that adheres to the above validation rules.
+    /**
+     * 构造函数，将 songId, name, artistName, verified 和 length 作为参数传入 Artist。
+     * Constructor, passing songId, name, artistName, verified and length as parameters to Artist.
+     *
+     * @param songId 歌曲ID。
+     *               Song ID.
+     * @param name  歌曲名称。
+     *              Song name.
+     * @param artistName 歌手的名字。
+     *                   Artist name.
+     * @param verified 验证是否为 verified 字段，使得 SongTest 成功编译。
+     *                 Verify whether verified is a field, so that SongTest can be successfully compiled.
+     * @param length 歌曲长度。
+     *               Song length.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     public Song(int songId, String name, String artistName, boolean verified, int length) {
         setSongId(songId);
         setName(name);
@@ -54,6 +79,10 @@ public class Song {
     }
 
     //TODO Add a getter and setter for each field, that adheres to the above validation rules.
+    /*
+      封装。
+      Encapsulation.
+     */
     public int getSongId() {
         return songId;
     }
@@ -123,6 +152,17 @@ public class Song {
     }
 
     //TODO Add a generated equals method.
+    /**
+     * 重写 equals() 方法，比较两个对象是否相等。
+     * Override the equals() method to compare whether two objects are equal.
+     *
+     * @param object 传入的对象。
+     *               Passed in object.
+     * @return 两个对象是否相等。
+     *         Whether the two objects are equal.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     @Override
     public boolean equals(Object object) {
 
@@ -160,6 +200,15 @@ public class Song {
     }
 
     //TODO The toString should return the string containing each of the field values including the use of the artist's toString()
+    /**
+     * 重写 toString() 方法，返回歌单信息。
+     * Override the toString() method to return the information of playlist.
+     *
+     * @return 歌单信息。
+     *         Information of playlist.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     @Override
     public String toString() {
         return "Song{" +
@@ -170,3 +219,7 @@ public class Song {
                 "\n}";
     }
 }
+/*
+ * End of models.Song Class.
+ * Checked by Fan Xinkang on 2025/04/03.
+ */

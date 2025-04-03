@@ -3,6 +3,14 @@ package controllers;
 import models.Song;
 import java.util.ArrayList;
 
+/**
+ * 此类用于控制播放器，并提供 CRUD 操作。
+ * This class is used to control the player, and provides CRUD operations.
+ *
+ * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @version 4.4
+ * @since version 0.0
+ */
 public class Playlist {
     private String playlistName = ""; // valid length is 20 - default to the first 20 characters of input.
     private ArrayList<Song> songs = new ArrayList<Song>();  // should start empty
@@ -46,12 +54,28 @@ public class Playlist {
     //TODO Add the constructor, Playlist(String, String), that adheres to the above validation rules.
     //     The order of the fields in the parameter list is the same as the order of fields above.
     //     i.e. playlistName is first, then description.
+
+    /**
+     * 构造函数，将 playlistName 和 description 作为参数传入 Playlist。
+     * Constructor, passing playlistName and description as parameters to Playlist.
+     *
+     * @param playlistName 播放器名字。
+     *                     Playlist name.
+     * @param description 播放器描述。
+     *                    Playlist description.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public Playlist(String playlistName, String description) {
         setPlaylistName(playlistName);
         setDescription(description);
     }
 
     //TODO Add a getter and setter for each field, that adheres to the above validation rules.
+    /*
+      封装。
+      Encapsulation.
+     */
     public String getPlaylistName() {
         return playlistName;
     }
@@ -121,6 +145,17 @@ public class Playlist {
     //     The return type is boolean.
     //     This method will add the song object, passed as a parameter to the arraylist of songs.
     //     If the add was successful, return true, otherwise, return false.
+    /**
+     * 向 songs ArrayList 添加 Song 对象。
+     * Add the Song object to songs ArrayList.
+     *
+     * @param song 想要添加到歌曲 ArrayList 中的 Song 对象。
+     *             The Song object you want to add to songs ArrayList.
+     * @return 歌曲添加的结果。
+     *         The result of adding the song.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public boolean addSong(Song song) {
         return songs.add(song);
     }
@@ -132,6 +167,20 @@ public class Playlist {
     //     The other parameter is a Song object - that is being updated.
     //     i.e. it holds the new values of id, name, length, and artist.
     //     If the update was successful, then return true.
+
+    /**
+     * 更新 songs ArrayList 中的 Song 对象。
+     * Update the Song object in songs ArrayList.
+     *
+     * @param index 歌曲在 ArrayList 中的索引。
+     *              The index of the song in the ArrayList.
+     * @param song 想要添加到歌曲 ArrayList 中的 Song 对象。
+     *             The Song object you want to add to songs ArrayList.
+     * @return 歌曲更新的结果。
+     *         The result of updating the song.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     public boolean updateSong(int index, Song song) {
         if (isValidIndex(index)) {
             Song songToUpdate = songs.get(index);
@@ -171,6 +220,17 @@ public class Playlist {
     //      - If the index is invalid (i.e. there is no song object at that location), return null.
     //      - If the index is valid, remove the object at that index location.
     //     Return the object you just deleted.
+    /**
+     * 删除 songs ArrayList 中的 Song 对象。
+     * Delete the Song object in songs ArrayList.
+     *
+     * @param index 歌曲在 ArrayList 中的索引。
+     *              The index of the song in the ArrayList.
+     * @return 歌曲删除的结果。
+     *         The result of deleting the song.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public Song deleteSong(int index) {
         if (isValidIndex(index)) {
             Song deleteSong = songs.get(index);
@@ -183,6 +243,13 @@ public class Playlist {
 
     //TODO  Add a method  addLike() (no parameter) with return type void.
     //      This method simply adds 1 to the likes variable.
+    /**
+     * 增加歌曲的点赞数。
+     * Add a like to the song.
+     *
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public void addLike() {
         likes++;
     }
@@ -203,6 +270,17 @@ public class Playlist {
       增加验证：我们在 Driver 类中调用，做额外的验证，所以设置成 public。
       Add verification: We call it in the Driver class to do additional verification, so it is set to public.
      */
+    /**
+     * 判断索引是否有效。
+     * Judge whether the index is valid.
+     *
+     * @param index 歌曲在 ArrayList 中的索引。
+     *              The index of the song in the ArrayList.
+     * @return index 判断的结果。
+     *         The result of the index.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public boolean isValidIndex(int index) {
         return index >= 0 && index < songs.size();
     }
@@ -210,6 +288,17 @@ public class Playlist {
     //TODO  Add a method  findSong(int) which returns a Song object:
     //       - if the supplied index is valid, the Song object at that location is returned
     //       - if the supplied index is invalid, null is returned
+    /**
+     * 寻找索引对应的歌曲。
+     * Find the song corresponding to the index.
+     *
+     * @param index 歌曲在 ArrayList 中的索引。
+     *              The index of the song in the ArrayList.
+     * @return 索引对应的歌曲。
+     *         The song corresponding to the index.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public Song findSong(int index) {
         if (isValidIndex(index)) {
             return songs.get(index);
@@ -240,6 +329,19 @@ public class Playlist {
     //     This method takes in the index of the song object whose artist's verified status you want to update.
     //      - If the index is invalid (i.e. there is no song object at that location), return null.
     //      - If the index is valid, retrieve the object and set the verified status to the parameter value.
+    /**
+     * 更新歌曲的 verified 状态。
+     * Update the verified status of the song.
+     *
+     * @param index 歌曲在 ArrayList 中的索引。
+     *              The index of the song in the ArrayList.
+     * @param verified 歌手的验证状态。
+     *                 The verified status of the artist.
+     * @return 歌手验证状态更新的结果。
+     *         The result of updating the verified status of the song.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public Song updateVerifiedStatus(int index, boolean verified) {
         if (isValidIndex(index)) {
             Song song = songs.get(index);
@@ -265,6 +367,15 @@ public class Playlist {
       题目勘误：新增 int 类型变量 numSongs，用于返回 songs 数组长度，使得 PlaylistTest 成功编译。
       Title error: The new int variable numSongs is added to return the songs array length, so that PlaylistTest can be successfully compiled.
      */
+    /**
+     * 返回 songs 数组长度。
+     * Return the songs array length.
+     *
+     * @return songs 数组长度。
+     *         The songs array length.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public int numSongs() {
         return songs.size();
     }
@@ -285,6 +396,15 @@ public class Playlist {
 
     //TODO Add a method getTotalPlayListLength() which returns a integer value of the total time (in seconds) if the there are songs in the playlist.
     //     -1 if playlist is empty.
+    /**
+     * 返回 songs 数组中所有歌曲的总长度。
+     * Return the total length of all songs in the songs array.
+     *
+     * @return songs 数组中所有歌曲的总长度。
+     *         The total length of all songs in the songs array.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public int getTotalPlayListLength() {
         if (songs.isEmpty()) {
             return -1;
@@ -300,6 +420,15 @@ public class Playlist {
 
     //TODO Add a method getAverageSongLength() which returns a integer value of the average length of songs on the playlist.
     //     -1 if playlist is empty.
+    /**
+     * 返回 songs 数组中所有歌曲的平均长度。
+     * Return the average length of all songs in the songs array.
+     *
+     * @return songs 数组中所有歌曲的平均长度。
+     *         The average length of all songs in the songs array.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public int getAverageSongLength() {
         if (songs.isEmpty()) {
             return -1;
@@ -343,6 +472,15 @@ public class Playlist {
       题目勘误：新增 String 类型变量 listSongs，用于遍历 songs 数组，使得 PlaylistTest 成功编译。
       Title error: The new String variable listSongs is added to traversal the songs array, so that PlaylistTest can be successfully compiled.
      */
+    /**
+     * 列出所有歌曲。
+     * List all songs.
+     *
+     * @return 遍历 songs 数组的结果。
+     *         The result of traversing the songs array.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 4.3
+     */
     public String listSongs() {
         if (songs.isEmpty()) {
             return "No songs in playlist.";
@@ -368,6 +506,15 @@ public class Playlist {
     //        3: song 4 Details
     //      - If there are no such songs stored in the array list, the return string should have "No songs in playlist".
     //      - If there are songs in the playlist but none with a verified artist, the return string should have "There are no songs from verified artists on this playlist".
+    /**
+     * 列出已验证的歌手的歌曲。
+     * List songs from verified artists.
+     *
+     * @return 已验证歌手的歌曲。
+     *         The songs from verified artists.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 4.3
+     */
     public String listSongsFromVerifiedArtists() {
         if (songs.isEmpty()) {
             return "No songs in playlist.";
@@ -400,6 +547,17 @@ public class Playlist {
     //        4: song 5 Details
     //      - If there are no songs stored in the array list, return a string that contains "No songs in playlist.".
     //      - If there are songs in the playlist, but none with songs over (or equal to) this length, then "There are no songs on this playlist longer than 'length supplied' " should be returned.
+    /**
+     * 列出歌曲长度大于指定长度的歌曲。
+     * List songs longer than specified length.
+     *
+     * @param length 指定长度。
+     *               Specified length.
+     * @return 由歌曲长度大于指定长度的歌曲组成的字符串。
+     *         The string composed of songs longer than specified length.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public String listSongsLongerThan(int length) {
         if (songs.isEmpty()) {
             return "No songs in playlist.";
@@ -435,6 +593,17 @@ public class Playlist {
     //        4: song 5 Details
     //      - If there are no songs stored in the array list, return a string that contains "No songs in playlist".
     //      - If there are songs in the playlist, but none by verified artists, then "There are no  songs on this playlist by 'artist supplied' " should be returned.
+    /**
+     * 列出指定歌手的歌曲。
+     * List songs of specified artist.
+     *
+     * @param artistName 歌手的名字。
+     *                   The name of the artist.
+     * @return 由指定歌手的歌曲组成的字符串。
+     *         The string composed of songs of specified artist.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public String listOfSongsOfArtist(String artistName) {
 
         if (songs.isEmpty()) {
@@ -484,6 +653,17 @@ public class Playlist {
     //     If no song exists for that code, return null.
     // NOTE: The first song encountered is returned, even if more exist with that code.
     //     For extra credit, you could add in validation to ensure that the code is unique when adding a Song.
+    /**
+     * 根据歌曲编号查找歌曲。
+     * Search for a song by song code.
+     *
+     * @param songCode 要搜索的歌曲ID。
+     *                 The song ID to search for.
+     * @return 通过歌曲编号查找到的歌曲结果。
+     *         The result of searching for a song by song code.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public Song findSongByCode(int songCode) {
         for (Song song : songs) {
             if (song.getSongId() == songCode) {
@@ -504,6 +684,17 @@ public class Playlist {
     //        4: song 5 Details
     //      - If there are no songs stored in the array list, return a string that contains "No songs".
     //      - If there are no songs whose name contains the supplied string, the return string should have "No songs found".
+    /**
+     * 根据歌曲名称搜索歌曲。
+     * Search songs by song name.
+     *
+     * @param songName 歌曲名称。
+     *                 The song name.
+     * @return 通过歌曲名称搜索到的歌曲结果。
+     *         The result of searching songs by song name.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
+     */
     public String searchSongsByName(String songName) {
         if (songs.isEmpty()) {
             return "No songs.";
@@ -526,6 +717,10 @@ public class Playlist {
         }
     }
 
+    /*
+      提示：该方法未被使用。
+      Hint: This method is not used.
+     */
     //TODO Add a method, searchSongsByArtistName(String).
     //     The return type is String.
     //     This method returns a list of songs whose artist name contains the string passed as a parameter.
@@ -572,9 +767,13 @@ public class Playlist {
 //        return false;
 //    }
 
-    /*
-      添加了toString()方法，使得 PlaylistTest 的编译通过。
-      The toString() method was added, so that the compilation of PlaylistTest was passed.
+    /**
+     * 重写 toString() 方法，返回歌单信息。
+     * Override the toString() method to return the information of the playlist.
+     * @return 歌单信息。
+     *         Information of the playlist.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 2.0
      */
     @Override
     public String toString() {
@@ -595,3 +794,7 @@ public class Playlist {
         }
     }
 }
+/*
+ * End of controllers.Playlist Class.
+ * Checked by Fan Xinkang on 2025/04/03.
+ */

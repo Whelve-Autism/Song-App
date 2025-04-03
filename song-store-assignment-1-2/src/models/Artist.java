@@ -1,5 +1,13 @@
 package models;
 
+/**
+ * 此类用于创建并存储歌手对象。
+ * This class is used to create and store artist objects.
+ *
+ * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @version 5.0
+ * @since version 3.0
+ */
 public class Artist {
 
     //TODO The artist name (String artistName) in the system is entered by the user.
@@ -19,12 +27,27 @@ public class Artist {
     private boolean verified = false;
 
     //TODO Add the constructor, Artist(String, boolean), that adheres to the above validation rules.
+    /**
+     * 构造函数，将 artistName 和 verified 作为参数传入 Artist。
+     * Constructor, passing artistName and verified as parameters to Artist.
+     *
+     * @param artistName 歌手名字。
+     *                   The name of the artist.
+     * @param verified 歌手验证状态。
+     *                 The verification status of the artist.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     public Artist(String artistName, boolean verified) {
         setArtistName(artistName);
         this.verified = verified;
     }
 
     //TODO Add a getter and setter for each field, that adheres to the above validation rules.
+    /*
+      封装。
+      Encapsulation.
+     */
     public String getArtistName() {
         return artistName;
     }
@@ -53,6 +76,17 @@ public class Artist {
     }
 
     //TODO Add a generated equals method.
+    /**
+     * 重写 equals() 方法，判断 artistName 和 verified 是否相等。
+     * Override the equals() method to determine whether artistName and verified are equal.
+     *
+     * @param object 传入的对象。
+     *               The incoming object.
+     * @return 两个对象是否相等。
+     *         Whether the two objects are equal.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     @Override
     public boolean equals(Object object) {
 
@@ -86,6 +120,15 @@ public class Artist {
     }
 
     //TODO The toString should return the string in this format: Taylor Swift is a verified artist OR Shane Hennessy is not a verified artist
+    /**
+     * 重写 toString() 方法，返回 artistName 和 verified 的信息。
+     * Override the toString() method to return the information of artistName and verified.
+     *
+     * @return artistName 和 verified 的信息。
+     *         Information of artistName and verified.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.0
+     */
     @Override
     public String toString() {
         if (isVerified()) {
@@ -95,3 +138,7 @@ public class Artist {
         }
     }
 }
+/*
+ * End of models.Artist Class.
+ * Checked by Fan Xinkang on 2025/04/03.
+ */

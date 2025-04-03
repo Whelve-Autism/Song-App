@@ -8,6 +8,14 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import java.io.*;
 
+/**
+ * 此类用于运行 Playlist 应用程序来管理歌曲。
+ * This class runs the Playlist application to manage songs.
+ *
+ * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @version 4.4
+ * @since version 0.0
+ */
 public class Driver {
 
     //TODO Define an object of the Playlist here.
@@ -354,10 +362,38 @@ public class Driver {
         }
     }
 
+    /**
+     * 创建 XStream 对象，并设置别名。
+     * Create an XStream object and set aliases.
+     *
+     * @return XStream 对象。
+     *         XStream object.
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.1.1
+     */
+    private static XStream XStreamCreating() {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("song", Song.class);
+        xstream.alias("artist", Artist.class);
+        xstream.alias("playlist", Playlist.class);
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(new Class[]{Song.class, Artist.class, Playlist.class});
+        return xstream;
+    }
+
     //TODO Add a method, load().
     //     The return type is void.
     //     This method uses the XStream component to deserialise the playList object and their associated artists from an XML file into the Songs array list.
-    @SuppressWarnings("unchecked")
+    /**
+     * 将播放列表加载到 Storage.xml 文件中。
+     * Load the playlist from the Storage.xml file.
+     *
+     * @throws Exception 如果加载失败，则抛出异常。
+     *                   If loading fails, an exception is thrown.
+     * @see #XStreamCreating()
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.1.1
+     */
     public static void load() throws Exception {
         XStream xstream = XStreamCreating();
         try (FileInputStream file = new FileInputStream("Store.xml")) {
@@ -371,6 +407,16 @@ public class Driver {
     //TODO Add a method, save().
     //     The return type is void.
     //     This method uses the XStream component to serialise the playList object and their associated artists to an XML file.
+    /**
+     * 将播放列表保存到 Storage.xml 文件中。
+     * Save the playlist to the Storage.xml file.
+     *
+     * @throws Exception 如果保存失败，则抛出异常。
+     *                   If saving fails, an exception is thrown.
+     * @see #XStreamCreating()
+     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @since version 3.1.1
+     */
     public static void save() throws Exception {
         XStream xstream = XStreamCreating();
         try (FileOutputStream file = new FileOutputStream("Store.xml")) {
@@ -380,14 +426,8 @@ public class Driver {
             throw e;
         }
     }
-
-    private static XStream XStreamCreating() {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("song", Song.class);
-        xstream.alias("artist", Artist.class);
-        xstream.alias("playlist", Playlist.class);
-        XStream.setupDefaultSecurity(xstream);
-        xstream.allowTypes(new Class[]{Song.class, Artist.class, Playlist.class});
-        return xstream;
-    }
 }
+/*
+ * End of Driver Class.
+ * Checked by Fan Xinkang on 2025/04/03.
+ */

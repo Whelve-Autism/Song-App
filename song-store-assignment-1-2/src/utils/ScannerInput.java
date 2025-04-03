@@ -87,3 +87,7 @@ public class ScannerInput {
         return input.next().charAt(0);
     }
 }
+/*
+ * End of utils.ScannerInput Class.
+ * Checked by Fan Xinkang on 2025/04/03.
+ */
