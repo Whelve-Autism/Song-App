@@ -381,9 +381,6 @@ public class Driver {
         return xstream;
     }
 
-    //TODO Add a method, load().
-    //     The return type is void.
-    //     This method uses the XStream component to deserialise the playList object and their associated artists from an XML file into the Songs array list.
     /**
      * 将播放列表加载到 Storage.xml 文件中。
      * Load the playlist from the Storage.xml file.
@@ -397,6 +394,7 @@ public class Driver {
     public static void load() throws Exception {
         XStream xstream = XStreamCreating();
         try (FileInputStream file = new FileInputStream("Store.xml")) {
+            System.out.println("Loading playlist...");
             playlist = (Playlist) xstream.fromXML(file);
         } catch (Exception e) {
             System.err.println("Error loading playlist: " + e.getMessage());
@@ -404,9 +402,6 @@ public class Driver {
         }
     }
 
-    //TODO Add a method, save().
-    //     The return type is void.
-    //     This method uses the XStream component to serialise the playList object and their associated artists to an XML file.
     /**
      * 将播放列表保存到 Storage.xml 文件中。
      * Save the playlist to the Storage.xml file.
@@ -420,6 +415,7 @@ public class Driver {
     public static void save() throws Exception {
         XStream xstream = XStreamCreating();
         try (FileOutputStream file = new FileOutputStream("Store.xml")) {
+            System.out.println("Saving playlist...");
             xstream.toXML(playlist, file);
         } catch (Exception e) {
             System.err.println("Error saving playlist: " + e.getMessage());
