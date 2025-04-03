@@ -381,6 +381,9 @@ public class Driver {
         return xstream;
     }
 
+    //TODO Add a method, load().
+    //     The return type is void.
+    //     This method uses the XStream component to deserialise the playList object and their associated artists from an XML file into the Songs array list.
     /**
      * 将播放列表加载到 Storage.xml 文件中。
      * Load the playlist from the Storage.xml file.
@@ -401,7 +404,10 @@ public class Driver {
             throw e;
         }
     }
-
+    
+    //TODO Add a method, save().
+    //     The return type is void.
+    //     This method uses the XStream component to serialise the playList object and their associated artists to an XML file.
     /**
      * 将播放列表保存到 Storage.xml 文件中。
      * Save the playlist to the Storage.xml file.
