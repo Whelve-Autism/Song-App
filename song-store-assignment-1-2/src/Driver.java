@@ -22,9 +22,14 @@ public class Driver {
     //     It should be declared private.
     private static Playlist playlist;
 
-    /*
-      程序入口。
-      Main program entry point.
+    /**
+     * 程序入口。
+     * Main program entry point.
+     *
+     * @param args 命令行参数。
+     *             The command line arguments.
+     * @author Lu Siyu
+     * @since version 2.0
      */
     public static void main(String[] args) {
         new Driver();
@@ -53,9 +58,14 @@ public class Driver {
     // Private methods for displaying the menu and processing the selected options
     //----------------------------------------------------------------------------
 
-    /*
-      显示菜单。
-      Display menu.
+    /**
+     * 显示菜单。
+     * Display menu.
+     *
+     * @return 根据菜单内容返回的选项。
+     *         Return the selected option according to the menu.
+     * @author Xu Shiyi
+     * @since version 2.0
      */
     private static int displayMenu() {
         System.out.println("""
@@ -85,9 +95,12 @@ public class Driver {
         return ScannerInput.readNextInt("Please enter an option: ");
     }
 
-    /*
-      运行菜单。
-      Run menu.
+    /**
+     * 运行菜单，根据选项执行操作。
+     * Run menu, process the selected options.
+     *
+     * @author Lu Siyu
+     * @since version 3.1
      */
     public static void runMenu() {
         int option = displayMenu();
@@ -168,9 +181,12 @@ public class Driver {
     // Private methods for CRUD on Song
     //------------------------------------
 
-    /*
-      添加歌曲。
-      Add a song.
+    /**
+     * 添加歌曲。
+     * Add a song.
+     *
+     * @author Fan Xinkang
+     * @since version 2.0
      */
     private static void addSong() {
         int songId = ScannerInput.readNextInt("Enter song ID (1000-9999): ");
@@ -187,9 +203,12 @@ public class Driver {
         }
     }
 
-    /*
-      列出所有歌曲。
-      List all songs.
+    /**
+     * 列出所有的歌曲。
+     * List all songs.
+     *
+     * @author Xu Shiyi
+     * @since version 2.0
      */
     private static void listAllSongs() {
         if (playlist == null) {
@@ -199,9 +218,12 @@ public class Driver {
         }
     }
 
-    /*
-      更新歌曲。
-      Update a song.
+    /**
+     * 更新歌曲。
+     * Update a song.
+     *
+     * @author Fan Xinkang.
+     * @since version 2.0
      */
     private static void updateSong() {
         int index = ScannerInput.readNextInt("Enter the index of the song to update: ");
@@ -232,9 +254,12 @@ public class Driver {
         System.out.println("Song updated successfully.");
     }
 
-    /*
-      删除歌曲。
-      Delete a song.
+    /**
+     * 删除歌曲。
+     * Delete a song.
+     *
+     * @author Fan Xinkang
+     * @since version 2.0
      */
     private static void deleteSong() {
         int index = ScannerInput.readNextInt("Enter the index of the song to delete: ");
@@ -251,9 +276,12 @@ public class Driver {
     //  Private methods for Search facility
     //-----------------------------------------------------------------
 
-    /*
-      更新验证状态。
-      Update the verified status.
+    /**
+     * 更新验证状态。
+     * Update the verified status.
+     *
+     * @author Fan Xinkang
+     * @since version 3.0
      */
     private static void setVerifiedStatus() {
         int index = ScannerInput.readNextInt("Enter the index of the song to update verified status: ");
@@ -267,9 +295,12 @@ public class Driver {
         }
     }
 
-    /*
-      通过 ID 搜索歌曲。
-      Search a song by ID.
+    /**
+     * 通过 ID 搜索歌曲。
+     * Search a song by ID.
+     *
+     * @author Fan Xinkang
+     * @since version 3.0
      */
     private static void findSongById() {
         int songCode = ScannerInput.readNextInt("Enter the song code to find: ");
@@ -282,18 +313,24 @@ public class Driver {
         }
     }
 
-    /*
-      通过名称搜索歌曲。
-      Search a song by name.
+    /**
+     * 通过歌曲名称搜索歌曲。
+     * Search a song by name.
+     *
+     * @author Lu Siyu
+     * @since version 2.0
      */
     private static void searchSongByName() {
         String name = ScannerInput.readNextLine("Enter the song name to search: ");
         System.out.println(playlist.searchSongsByName(name));
     }
 
-    /*
-      添加喜欢。
-      Add a like.
+    /**
+     * 添加喜欢。
+     * Add a like.
+     *
+     * @author Xu Shiyi
+     * @since version 2.0
      */
     private static void addLikeToPlaylist() {
         playlist.addLike();
@@ -304,26 +341,35 @@ public class Driver {
     //  Private methods for Reports
     // ----------------------------
 
-    /*
-      列出所有已验证的歌手的曲目。
-      List all songs by verified artists.
+    /**
+     * 列出所有已验证的歌手的曲目。
+     * List all songs by verified artists.
+     *
+     * @author Xu Shiyi
+     * @since version 2.0
      */
     private static void listSongsByVerifiedArtists() {
         System.out.println(playlist.listSongsFromVerifiedArtists());
     }
 
-    /*
-      列出所有超过给定长度的曲目。
-      List all songs longer than a given length.
+    /**
+     * 列出所有超过给定长度的曲目。
+     * List all songs longer than a given length.
+     *
+     * @author Lu Siyu
+     * @since version 2.0
      */
     private static void listSongsOverGivenLength() {
         int length = ScannerInput.readNextInt("Enter the minimum song length: ");
         System.out.println(playlist.listSongsLongerThan(length));
     }
 
-    /*
-      列出给定歌手的曲目。
-      List all songs by a given artist.
+    /**
+     * 列出给定歌手的曲目。
+     * List all songs by a given artist.
+     *
+     * @author Lu Siyu
+     * @since version 2.0
      */
     private static void listSongsOfGivenArtist() {
         String artistName = ScannerInput.readNextLine("Enter the artist name: ");
@@ -334,9 +380,12 @@ public class Driver {
     //  Private methods for Persistence
     // --------------------------------
 
-    /*
-      打印平均长度。
-      Print the average length of songs in the playlist.
+    /**
+     * 打印平均长度。
+     * Print the average length of songs in the playlist.
+     *
+     * @author Fan Xinkang
+     * @since version 3.0
      */
     private static void printAverageLength() {
         int averageLength = playlist.getAverageSongLength();
@@ -348,9 +397,12 @@ public class Driver {
         }
     }
 
-    /*
-      打印播放列表的总长度。
-      Print the total length of songs in the playlist.
+    /**
+     * 打印播放列表的总长度。
+     * Print the total length of songs in the playlist.
+     *
+     * @author Fan Xinkang
+     * @since version 3.0
      */
     private static void printLengthOfPlaylist() {
         int totalLength = playlist.getTotalPlayListLength();
@@ -368,7 +420,7 @@ public class Driver {
      *
      * @return XStream 对象。
      *         XStream object.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1.1
      */
     private static XStream XStreamCreating() {
@@ -391,7 +443,7 @@ public class Driver {
      * @throws Exception 如果加载失败，则抛出异常。
      *                   If loading fails, an exception is thrown.
      * @see #XStreamCreating()
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1.1
      */
     public static void load() throws Exception {
@@ -415,7 +467,7 @@ public class Driver {
      * @throws Exception 如果保存失败，则抛出异常。
      *                   If saving fails, an exception is thrown.
      * @see #XStreamCreating()
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1.1
      */
     public static void save() throws Exception {

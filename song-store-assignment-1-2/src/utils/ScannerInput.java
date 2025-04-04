@@ -6,8 +6,8 @@ import java.util.Scanner;
  * 此类用于从用户输入中读取数据，并进行验证。
  * This class is used to read data from the user and perform validation.
  *
- * @author Siobhan Drohan, Mairead Meagher, Siobhan Roche
- * @version 1.0
+ * @author Siobhan Drohan, Mairead Meagher, Siobhan Roche, Fan Xinkang
+ * @version 4.5.3
  * @since version 1.0
  */
 public class ScannerInput {

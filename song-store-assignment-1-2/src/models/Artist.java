@@ -35,7 +35,7 @@ public class Artist {
      *                   The name of the artist.
      * @param verified 歌手验证状态。
      *                 The verification status of the artist.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Lu Siyu
      * @since version 3.0
      */
     public Artist(String artistName, boolean verified) {
@@ -84,7 +84,7 @@ public class Artist {
      *               The incoming object.
      * @return 两个对象是否相等。
      *         Whether the two objects are equal.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     @Override
@@ -126,7 +126,7 @@ public class Artist {
      *
      * @return artistName 和 verified 的信息。
      *         Information of artistName and verified.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Lu Siyu
      * @since version 3.0
      */
     @Override
