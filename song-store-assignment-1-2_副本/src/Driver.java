@@ -198,8 +198,9 @@ public class Driver {
           验证 songId。
           Validate songId.
          */
-        int songId = -1;
-        while (songId == -1) {
+        int songId;
+        String songIdSet = "Invalid";
+        while (songIdSet.equals("Invalid")) {
             String prompt;
             if (isAddingNew) {
                 prompt = "Enter song ID (1000-9999).";
@@ -210,7 +211,7 @@ public class Driver {
 
             if (songIdInput.isEmpty()) {
                 if (!isAddingNew) {
-                    songId = song.getSongId();
+                    songIdSet = "Valid";
                 } else {
                     printlnRandomColor("Invalid enter. Please re-enter.");
                 }
@@ -219,13 +220,12 @@ public class Driver {
                     songId = Integer.parseInt(songIdInput);
                     if (songId < 1000 || songId > 9999) {
                         printlnRandomColor("Invalid song ID. Please enter a song ID between 1000 and 9999.");
-                        songId = -1;
                     } else {
                         song.setSongId(songId);
+                        songIdSet = "Valid";
                     }
                 } catch (NumberFormatException e) {
                     printlnRandomColor("Invalid song ID. Please enter a song ID between 1000 and 9999.");
-                    songId = -1;
                 }
             }
         }
@@ -234,8 +234,9 @@ public class Driver {
           验证 name。
           Validate name.
          */
-        String name = "Invalid";
-        while (name.equals("Invalid")) {
+        String name;
+        String nameSet = "Invalid";
+        while (nameSet.equals("Invalid")) {
             String prompt;
             if (isAddingNew) {
                 prompt = "Enter song name.";
@@ -250,13 +251,13 @@ public class Driver {
                 } else {
                     name = nameInput;
                     song.setName(name);
+                    nameSet = "Valid";
                 }
             } else {
                 if (!isAddingNew) {
-                    name = song.getName();
+                    nameSet = "Valid";
                 } else {
                     printlnRandomColor("Invalid enter. Please re-enter.");
-                    name = "Invalid";
                 }
             }
         }
@@ -265,8 +266,9 @@ public class Driver {
           验证 artistName。
           Validate artistName.
          */
-        String artistName = "Invalid";
-        while (artistName.equals("Invalid")) {
+        String artistName;
+        String artistNameSet = "Invalid";
+        while (artistNameSet.equals("Invalid")) {
             String prompt;
             if (isAddingNew) {
                 prompt = "Enter artist name.";
@@ -281,13 +283,13 @@ public class Driver {
                 } else {
                     artistName = artistNameInput;
                     song.getArtist().setArtistName(artistName);
+                    artistNameSet = "Valid";
                 }
             } else {
                 if (!isAddingNew) {
-                    artistName = song.getArtist().getArtistName();
+                    artistNameSet = "Valid";
                 } else {
                     printlnRandomColor("Invalid enter. Please re-enter.");
-                    artistName = "Invalid";
                 }
             }
         }
@@ -296,10 +298,30 @@ public class Driver {
           验证 verified。
           Validate verified.
          */
-        char verifiedInput = ScannerInput.readNextCharForUpdate("Set verified status (y/n).");
-        if (verifiedInput != '\0') {
-            boolean verified = verifiedInput == 'y';
-            song.getArtist().setVerified(verified);
+        boolean verified;
+        String verifiedSet = "Invalid";
+        while (verifiedSet.equals("Invalid")) {
+            String prompt;
+            if (isAddingNew) {
+                prompt = "Set verified status (y/n).";
+            } else {
+                prompt = "Set verified status (y/n) (or press Enter to skip).";
+            }
+            char verifiedInput = ScannerInput.readNextChar(prompt);
+
+            if (verifiedInput == ' ') {
+                if (!isAddingNew) {
+                    verifiedSet = "Valid";
+                } else {
+                    printlnRandomColor("Invalid enter. Please re-enter.");
+                }
+            } else if (verifiedInput == 'y' || verifiedInput == 'n') {
+                verified = verifiedInput == 'y';
+                song.getArtist().setVerified(verified);
+                verifiedSet = "Valid";
+            } else {
+                printlnRandomColor("Invalid input. Please enter 'y' or 'n'.");
+            }
         }
 
         /*
@@ -307,7 +329,8 @@ public class Driver {
           Validate length.
          */
         int length = -1;
-        while (length == -1) {
+        String lengthSet = "Invalid";
+        while (lengthSet.equals("Invalid")) {
             String prompt;
             if (isAddingNew) {
                 prompt = "Enter song length.";
@@ -321,20 +344,18 @@ public class Driver {
                     length = Integer.parseInt(lengthInput);
                     if (length < 1 || length > 600) {
                         printlnRandomColor("Invalid enter. Please re-enter.");
-                        length = -1;
                     } else {
                         song.setLength(length);
+                        lengthSet = "Valid";
                     }
                 } catch (NumberFormatException e) {
                     printlnRandomColor("Invalid song length. Please enter a number between 1 and 600.");
-                    length = -1;
                 }
             } else {
                 if (!isAddingNew) {
-                    length = song.getLength();
+                    lengthSet = "Valid";
                 } else {
                     printlnRandomColor("Invalid enter. Please re-enter.");
-                    length = -1;
                 }
             }
         }
@@ -652,6 +673,7 @@ public class Driver {
     public static void load() throws Exception {
         XStream xstream = XStreamCreating();
         try (FileInputStream file = new FileInputStream("Store.xml")) {
+            printlnRandomColor("Loading playlist...");
             playlist = (Playlist) xstream.fromXML(file);
         } catch (Exception e) {
             System.err.println("Error loading playlist: " + e.getMessage());
@@ -672,6 +694,7 @@ public class Driver {
     public static void save() throws Exception {
         XStream xstream = XStreamCreating();
         try (FileOutputStream file = new FileOutputStream("Store.xml")) {
+            printlnRandomColor("Saving playlist...");
             xstream.toXML(playlist, file);
         } catch (Exception e) {
             System.err.println("Error saving playlist: " + e.getMessage());

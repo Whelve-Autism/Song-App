@@ -422,7 +422,6 @@ public class Playlist {
         }
     }
 
-
     /**
      * 列出歌曲长度大于指定长度的歌曲。
      * List songs longer than specified length.
@@ -496,7 +495,6 @@ public class Playlist {
             return "There are no  songs on this playlist by " + artistName;
         }
     }
-
 
     //------------------------------
     //  FINDING METHODS
