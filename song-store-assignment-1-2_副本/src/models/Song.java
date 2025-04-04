@@ -6,7 +6,7 @@ import java.util.Objects;
  * 此类用于创建并存储歌曲对象。
  * This class is used to create and store song objects.
  *
- * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @author Fan Xinkang
  * @version 5.0
  * @since version 3.0
  */
@@ -57,7 +57,7 @@ public class Song {
      *                 Verify whether verified is a field, so that SongTest can be successfully compiled.
      * @param length 歌曲长度。
      *               Song length.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     public Song(int songId, String name, String artistName, boolean verified, int length) {
@@ -147,7 +147,7 @@ public class Song {
      *               Passed in object.
      * @return 两个对象是否相等。
      *         Whether the two objects are equal.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     @Override
@@ -192,7 +192,7 @@ public class Song {
      *
      * @return 歌单信息。
      *         Information of playlist.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     @Override
@@ -201,7 +201,7 @@ public class Song {
                 "\n    songId=" + songId +
                 ",\n    name='" + name + '\'' +
                 ",\n    artist=" + artist +
-                ",\n    length=" + length +
+                ",\n    length=" + length + " seconds" +
                 "\n}";
     }
 }

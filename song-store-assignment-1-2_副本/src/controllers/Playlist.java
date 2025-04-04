@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * 此类用于控制播放器，并提供 CRUD 操作。
  * This class is used to control the player, and provides CRUD operations.
  *
- * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @author Fan Xinkang
  * @version 5.0
  * @since version 5.0
  */
@@ -47,7 +47,7 @@ public class Playlist {
      *                     Playlist name.
      * @param description 播放器描述。
      *                    Playlist description.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public Playlist(String playlistName, String description) {
@@ -132,7 +132,7 @@ public class Playlist {
      *             The Song object you want to add to songs ArrayList.
      * @return 歌曲添加的结果。
      *         The result of adding the song.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public boolean addSong(Song song) {
@@ -153,7 +153,7 @@ public class Playlist {
      *             The Song object you want to add to songs ArrayList.
      * @return 歌曲更新的结果。
      *         The result of updating the song.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     public boolean updateSong(int index, Song song) {
@@ -197,7 +197,7 @@ public class Playlist {
      *              The index of the song in the ArrayList.
      * @return 歌曲删除的结果。
      *         The result of deleting the song.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkan
      * @since version 2.0
      */
     public Song deleteSong(int index) {
@@ -214,7 +214,7 @@ public class Playlist {
      * 增加歌曲的点赞数。
      * Add a like to the song.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public void addLike() {
@@ -237,7 +237,7 @@ public class Playlist {
      *              The index of the song in the ArrayList.
      * @return index 判断的结果。
      *         The result of the index.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public boolean isValidIndex(int index) {
@@ -252,7 +252,7 @@ public class Playlist {
      *              The index of the song in the ArrayList.
      * @return 索引对应的歌曲。
      *         The song corresponding to the index.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public Song findSong(int index) {
@@ -277,7 +277,7 @@ public class Playlist {
      *                 The verified status of the artist.
      * @return 歌手验证状态更新的结果。
      *         The result of updating the verified status of the song.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public Song updateVerifiedStatus(int index, boolean verified) {
@@ -304,7 +304,7 @@ public class Playlist {
      *
      * @return songs 数组长度。
      *         The songs array length.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public int numSongs() {
@@ -317,7 +317,7 @@ public class Playlist {
      *
      * @return songs 数组中所有歌曲的总长度。
      *         The total length of all songs in the songs array.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public int getTotalPlayListLength() {
@@ -339,7 +339,7 @@ public class Playlist {
      *
      * @return songs 数组中所有歌曲的平均长度。
      *         The average length of all songs in the songs array.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public int getAverageSongLength() {
@@ -370,7 +370,7 @@ public class Playlist {
      *
      * @return 遍历 songs 数组的结果。
      *         The result of traversing the songs array.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 4.3
      */
     public String listSongs() {
@@ -382,10 +382,10 @@ public class Playlist {
 
         for (int i = 0; i < songs.size(); i++) {
             Song song = songs.get(i);
-            builder.append(i).append(": Song{songId=").append(song.getSongId())
+            builder.append(i + 1).append(": Song{songId=").append(song.getSongId())
                     .append(", name='").append(song.getName()).append('\'')
                     .append(", artistName='").append(song.getArtist().getArtistName()).append('\'')
-                    .append(", length=").append(song.getLength()).append("seconds}\n");
+                    .append(", length=").append(song.getLength()).append(" seconds}\n");
         }
         return "Songs from playlist :" + "\n" + playlistName + "\n" + builder.toString().trim();
     }
@@ -396,7 +396,7 @@ public class Playlist {
      *
      * @return 已验证歌手的歌曲。
      *         The songs from verified artists.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 4.3
      */
     public String listSongsFromVerifiedArtists() {
@@ -410,7 +410,7 @@ public class Playlist {
         for (int i = 0; i < songs.size(); i++) {
             Song song = songs.get(i);
             if (song != null && song.getArtist() != null && song.getArtist().isVerified()) {
-                builder.append(i).append(": ").append(song).append("\n");
+                builder.append(i + 1).append(": ").append(song).append("\n");
                 isVerifiedSong = true;
             }
         }
@@ -430,7 +430,7 @@ public class Playlist {
      *               Specified length.
      * @return 由歌曲长度大于指定长度的歌曲组成的字符串。
      *         The string composed of songs longer than specified length.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public String listSongsLongerThan(int length) {
@@ -445,7 +445,7 @@ public class Playlist {
             Song song = songs.get(i);
 
             if (song.getLength() >= length) {
-                builder.append(i).append(": Song{songId=").append(song.getSongId())
+                builder.append(i + 1).append(": Song{songId=").append(song.getSongId())
                         .append(", name='").append(song.getName()).append('\'')
                         .append(", artistName='").append(song.getArtist().getArtistName()).append('\'')
                         .append(", length=").append(song.getLength()).append("}\n");
@@ -468,7 +468,7 @@ public class Playlist {
      *                   The name of the artist.
      * @return 由指定歌手的歌曲组成的字符串。
      *         The string composed of songs of specified artist.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public String listOfSongsOfArtist(String artistName) {
@@ -484,7 +484,7 @@ public class Playlist {
             Song song = songs.get(i);
 
             if (song.getArtist().getArtistName().equals(artistName)) {
-                builder.append(i).append(": ").append(song.getName()).append(" (").append(song.getSongId()).append(")\n");
+                builder.append(i + 1).append(": ").append(song.getName()).append(" (").append(song.getSongId()).append(")\n");
                 isArtistSong = true;
             }
         }
@@ -508,7 +508,7 @@ public class Playlist {
      *                 The song ID to search for.
      * @return 通过歌曲编号查找到的歌曲结果。
      *         The result of searching for a song by song code.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public Song findSongByCode(int songCode) {
@@ -532,7 +532,7 @@ public class Playlist {
      *                 The song name.
      * @return 通过歌曲名称搜索到的歌曲结果。
      *         The result of searching songs by song name.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public String searchSongsByName(String songName) {
@@ -566,7 +566,7 @@ public class Playlist {
      * Override the toString() method to return the information of the playlist.
      * @return 歌单信息。
      *         Information of the playlist.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     @Override

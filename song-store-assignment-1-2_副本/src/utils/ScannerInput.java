@@ -70,8 +70,8 @@ public class ScannerInput {
      * 读取一个字符串。
      * Read a single string from the user.
      *
-     * @param prompt  在控制台打印的信息。
-     *                The information printed to the console for the user to read.
+     * @param prompt 在控制台打印的信息。
+     *               The information printed to the console for the user to read.
      * @return 从用户那里读取的字符串。
      *         The string read from the user.
      * @author Siobhan Drohan, Mairead Meagher, Siobhan Roche, Fan Xinkang
@@ -87,8 +87,8 @@ public class ScannerInput {
      * 读取一个字符。
      * Read a single char from the user.
      *
-     * @param prompt  在控制台打印的信息。
-     *                The information printed to the console for the user to read.
+     * @param prompt 在控制台打印的信息。
+     *               The information printed to the console for the user to read.
      * @return 从用户那里读取的字符。
      *         The char read from the user.
      * @author Siobhan Drohan, Mairead Meagher, Siobhan Roche, Fan Xinkang

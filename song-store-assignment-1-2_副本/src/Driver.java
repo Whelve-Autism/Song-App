@@ -14,7 +14,7 @@ import static UserInterface.Display.*;
  * 此类用于运行 Playlist 应用程序来管理歌曲。
  * This class runs the Playlist application to manage songs.
  *
- * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @author Fan Xinkang
  * @version 5.0
  * @since version 5.0
  */
@@ -28,7 +28,7 @@ public class Driver {
      *
      * @param args 命令行参数。
      *             The command line arguments.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class Driver {
      *
      * @return 根据菜单内容返回的选项。
      *         Return the selected option according to the menu.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     private static int displayMenu() {
@@ -89,7 +89,7 @@ public class Driver {
      * 运行菜单，根据选项执行操作。
      * Run menu, process the selected options.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1
      */
     public static void runMenu() {
@@ -182,7 +182,7 @@ public class Driver {
      *                    Judge whether the song is being added as new.
      * @return 验证并更新后的 Song 对象。
      *         The validated and updated Song object.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     private static Song validateSong(Song existingSong, boolean isAddingNew) {
@@ -366,7 +366,7 @@ public class Driver {
      * 添加歌曲。
      * Add a song.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     private static void addSong() {
@@ -389,7 +389,7 @@ public class Driver {
      * 列出所有的歌曲。
      * List all songs.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     private static void listAllSongs() {
@@ -404,7 +404,7 @@ public class Driver {
      * 更新歌曲。
      * Update a song.
      *
-     * @author Fan Xinkang.
+     * @author Fan Xinkang
      * @since version 5.0
      */
     private static void updateSong() {
@@ -425,7 +425,7 @@ public class Driver {
           如果输入的索引无效，则返回。
           If the input index is invalid, return.
          */
-        int index = ScannerInput.readNextIntWithSkip("Enter the index of the song to update (or press Enter to skip): ");
+        int index = ScannerInput.readNextIntWithSkip("Enter the index of the song to update (or press Enter to skip): ") - 1;
         if (index == -1) {
             printlnRandomColor("Skipping update.");
             return;
@@ -466,7 +466,7 @@ public class Driver {
      * 删除歌曲。
      * Delete a song.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     private static void deleteSong() {
@@ -479,7 +479,7 @@ public class Driver {
         printlnRandomColor("Songs available to delete:");
         printlnRandomColor(playlist.listSongs());
 
-        int index = ScannerInput.readNextIntWithSkip("Enter the index of the song to delete (or press Enter to skip): ");
+        int index = ScannerInput.readNextIntWithSkip("Enter the index of the song to delete (or press Enter to skip): ") - 1;
         if (index == -1) {
             printlnRandomColor("Skipping delete.");
             return;
@@ -526,7 +526,7 @@ public class Driver {
      * 通过 ID 搜索歌曲。
      * Search a song by ID.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     private static void findSongById() {
@@ -544,7 +544,7 @@ public class Driver {
      * 通过歌曲名称搜索歌曲。
      * Search a song by name.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     private static void searchSongByName() {
@@ -556,7 +556,7 @@ public class Driver {
      * 添加喜欢。
      * Add a like.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     private static void addLikeToPlaylist() {
@@ -572,7 +572,7 @@ public class Driver {
      * 列出所有已验证的歌手的曲目。
      * List all songs by verified artists.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     private static void listSongsByVerifiedArtists() {
@@ -583,7 +583,7 @@ public class Driver {
      * 列出所有超过给定长度的曲目。
      * List all songs longer than a given length.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     private static void listSongsOverGivenLength() {
@@ -595,7 +595,7 @@ public class Driver {
      * 列出给定歌手的曲目。
      * List all songs by a given artist.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 2.0
      */
     private static void listSongsOfGivenArtist() {
@@ -611,7 +611,7 @@ public class Driver {
      * 打印平均长度。
      * Print the average length of songs in the playlist.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     private static void printAverageLength() {
@@ -628,7 +628,7 @@ public class Driver {
      * 打印播放列表的总长度。
      * Print the total length of songs in the playlist.
      *
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.0
      */
     private static void printLengthOfPlaylist() {
@@ -647,7 +647,7 @@ public class Driver {
      *
      * @return XStream 对象。
      *         XStream object.
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1.1
      */
     private static XStream XStreamCreating() {
@@ -667,7 +667,7 @@ public class Driver {
      * @throws Exception 如果加载失败，则抛出异常。
      *                   If loading fails, an exception is thrown.
      * @see #XStreamCreating()
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1.1
      */
     public static void load() throws Exception {
@@ -688,7 +688,7 @@ public class Driver {
      * @throws Exception 如果保存失败，则抛出异常。
      *                   If saving fails, an exception is thrown.
      * @see #XStreamCreating()
-     * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+     * @author Fan Xinkang
      * @since version 3.1.1
      */
     public static void save() throws Exception {

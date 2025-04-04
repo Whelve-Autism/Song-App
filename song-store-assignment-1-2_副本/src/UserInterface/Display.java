@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * 此类用于美化显示界面。
  * This class is used to beautify the display interface.
  *
- * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+ * @author Fan Xinkang
  * @version 5.0
  * @since version 5.0
  */
@@ -42,7 +42,7 @@ public class Display {
      *
      * @param word 待打印的字符串。
      *             The string to be printed.
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void printRandomColor(String word) {
@@ -57,7 +57,7 @@ public class Display {
      *
      * @param wordln 待打印的字符串。
      *               The string to be printed.
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void printlnRandomColor(String wordln) {
@@ -71,7 +71,7 @@ public class Display {
      *
      * @param pattern 待打印的图案。
      *                The pattern to be printed.
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void printRandomColorForPattern(String pattern) {
@@ -87,7 +87,7 @@ public class Display {
      * 打印短斜杠，作为分隔符。
      * Print short length slash as separator.
      *
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void shortSlash() {
@@ -101,7 +101,7 @@ public class Display {
      * 打印中等长度的斜杠，作为分隔符。
      * Print middle length slash as separator.
      *
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void middleSlash() {
@@ -115,7 +115,7 @@ public class Display {
      * 打印长斜杠，作为分隔符。
      * Print long length slash as separator.
      *
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void longSlash() {
@@ -131,7 +131,7 @@ public class Display {
      *
      * @return 当前时间。
      *         The current time.
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static String getLocalDateTime() {
@@ -140,9 +140,9 @@ public class Display {
 
     /**
      * 显示开始界面。
-     * UserInterface.Display the start interface.
+     * Display the start interface.
      *
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void beginDisplay() {
@@ -187,9 +187,9 @@ public class Display {
 
     /**
      * 显示结束界面。
-     * UserInterface.Display the end interface.
+     * Display the end interface.
      *
-     * @author Fan Xinkang, Xu Shiyi and Lu Siyu
+     * @author Fan Xinkang
      * @since version 5.0
      */
     public static void endDisplay() {
