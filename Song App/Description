@@ -1,0 +1,39 @@
+此文件用于 Song App 的说明：
+首先，感谢您使用我设计的 Song App Version 6.1，接下来是对此的详细说明：
+目录是一份菜单，包含选项1-9，共9个功能：1、添加歌曲；2、更新歌曲；3、删除歌曲；4、列出所有歌曲；5、搜索歌曲；6、搜索歌手；7、获取音乐排行榜；8、播放歌曲；9、将歌曲列表发送到指定邮箱。
+其中，功能5、6、7未能实现，原因见下详细说明。
+1、添加歌曲：起始为空专辑空歌曲，默认先添加一张专辑，再向其添加一首歌曲，每次只能添加一首歌曲（专辑不能单独操作，一旦添加则不能修改或删除）。
+2、更新歌曲：选择一首歌曲后进行数据的修改，如果不想修改某项可以按回车键跳过。
+3、删除歌曲：选择一首歌后进行删除（此操作不能撤销）。
+4、列出所有歌曲：将专辑和歌曲的最新结果打印出来。
+5、搜索歌曲：爬取豆瓣网音乐平台进行搜索（功能尚未实现，我尝试加入很多的 header，甚至使用 API 密钥，也不能爬取到数据内容，顶多爬取到网页前端 HTML 布局内容，可能是豆瓣网音乐平台为了保护服务器，设置了严密的反爬虫系统，也可能是我技术不精）。
+6、搜索歌手：爬取豆瓣网音乐平台进行搜索（功能尚未实现，原因见上）。
+7、获取音乐排行榜：爬取豆瓣网音乐平台进行搜索（功能尚未实现，原因见上）。
+8、播放歌曲：根据菜单指引，选择一首歌进行播放（javax.sound.midi 音乐库）。
+9、将歌曲列表发送到指定邮箱：根据菜单指引，输入指定人的 QQ 账号，将邮件发送到指定人的 QQ 邮箱。
+注意：运行选项8的时候，读取文件的时候请不要按回车键，否则再次运行选项8的时候会导致重复播放。
+我对 controllers 类和 models 类拟写了 test 类测试文件，其中有部分错误，由于时间问题，未能及时修正，请谅解。
+由于我的水平有限，文件中可能还会含有其他错误，请谅解。
+参考资料：《Java 从入门到精通》、git hub（MIDI 音乐制作）、优课达官网（爬取音乐相关内容）。
+最后，再次感谢您使用我设计的 Song App，祝您工作顺利、生活愉快！
+开发者：樊心康。
+
+This file is used for the description of Song App:
+First of all, thank you for using the Song App Version 6.1 I designed. Next is a detailed description of it:
+The directory is a menu, including options 1-9, with a total of 9 functions: 1. Add songs; 2. Update songs; 3. Delete songs; 4. List all songs; 5. Search for songs; 6. Search for singers; 7. Get music rankings; 8. Play songs; 9. Send the song list to the designated mailbox.
+Among them, functions 5, 6 and 7 failed to be realized. The reasons are explained in detail below.
+1. Add songs: start with an empty album and empty songs. By default, add an album first, and then add a song to it. Only one song can be added at a time (the album cannot be operated alone, and once added, it cannot be modified or deleted).
+2. Update the song: Select a song and modify the data. If you don't want to modify an item, you can press the Enter key to skip it.
+3. Delete the song: Select a song and delete it (this operation cannot be undored).
+4. List all the songs: print out the latest results of the album and songs.
+5. Search for songs: crawl the Douban.com music platform to search (the function has not been realized yet. I tried to add a lot of headers. Even using the API key, I can't crawl the data content. At most, I crawl to the front-end HTML layout content of the web page. Maybe the Douban.com music platform is in order to protect Protect the server and set up a strict anti-crawler system, which may also be my lack of skills).
+6. Search for singers: crawl the Douban.com music platform to search (the function has not been realized yet, the reason is as above).
+7. Get the music ranking list: crawl the Douban music platform to search (the function has not been realized yet, the reason is as above).
+8. Play songs: According to the menu guidelines, select a song to play (javax.sound.midi music library).
+9. Send the song list to the designated mailbox: According to the menu guidelines, enter the QQ account of the designated person and send the email to the QQ mailbox of the designated person.
+Note: When running option 8, please do not press Enter when reading the file, otherwise it will cause repeated playback when running option 8 again.
+I wrote a test file for the controllers class and the models class. There are some errors in it. Due to time problems, it could not be corrected in time. Please understand.
+Due to my limited level, there may be other errors in the file. Please understand.
+Reference materials: "Java from Introduction to Proficiency", git hub (MIDI music production), Youkeda official website (crawling music-related content).
+Finally, thank you again for using the Song App I designed. I wish you a smooth work and a happy life!
+Developer: Fan Xinkang.

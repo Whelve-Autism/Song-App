@@ -29,8 +29,6 @@ public class AppoggiaturaResolverIMPL implements AppoggiaturaResolver {
      *                           The notes in front of the leaning sound.
      * @return 音符信息的数组。
      *         The notes in front of the leaning sound.
-     * @throws Exception 解析异常。
-     *                   Analysis abnormality.
      * @author qguangyao
      * @since version 6.0
      */

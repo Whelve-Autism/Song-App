@@ -8,8 +8,6 @@ import musicPlayer.player.note.NoteInfo;
  * 此类用于解析单个音符。
  * This class is used to resolve a single note.
  *
- * @return appoggiatura 处理后的音符数组。
- *         The array of notes processed by appoggiatura.
  * @author qguangyao
  * @version 6.0
  * @since version 6.0

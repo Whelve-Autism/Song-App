@@ -11,6 +11,8 @@ import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import static userInterface.Display.printlnRandomColor;
+
 /**
  * 此类用于播放 MIDI 文件（对外接口）。
  * This type is used to play MIDI files (external interface).
@@ -84,7 +86,7 @@ public class MyPlayer implements MetaEventListener {
             }
         } else if (meta.getType() == 47) {
             System.out.println();
-            System.out.println("Finished playing");
+            printlnRandomColor("Finished playing");
             player.close();
         } else {
             System.out.println(meta.getType());

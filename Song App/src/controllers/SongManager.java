@@ -54,7 +54,7 @@ public class SongManager {
      * @author Fan Xinkang
      * @since version 6.0
      */
-    private boolean isAlbumNameExists(String name) {
+    public boolean isAlbumNameExists(String name) {
         for (Album album : albums) {
             if (album.getAlbumName().equalsIgnoreCase(name)) {
                 return true;
@@ -76,7 +76,7 @@ public class SongManager {
      * @author Fan Xinkang
      * @since version 6.0
      */
-    private boolean isSongNameExists(Album album, String songName) {
+    public boolean isSongNameExists(Album album, String songName) {
         for (Song song : album.getSongs()) {
             if (song.getSongName().equalsIgnoreCase(songName)) {
                 return true;

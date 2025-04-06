@@ -107,7 +107,7 @@ public class Menu {
                 printlnRandomColor("Error: " + e.getMessage());
             }
 
-            printlnRandomColor("\nPress enter key to continue... ");
+            printlnRandomColor("\nPress Enter key to continue... ");
             readNextLine("");
             option = displayMenu();
         }
@@ -268,10 +268,10 @@ public class Menu {
             return;
         }
 
-        String selectedFile = files[choice - 1].getName(); // 使用文件名而不是绝对路径
+        String selectedFile = files[choice - 1].getName();
         try {
             MyPlayer player = new MyPlayer();
-            player.setFile("musicPlayer/resources/" + selectedFile); // 设置相对路径
+            player.setFile("musicPlayer/resources/" + selectedFile);
             player.play();
         } catch (Exception e) {
             printlnRandomColor("Error playing song: " + e.getMessage());
