@@ -248,6 +248,13 @@ public class Menu {
         }
     }
 
+    /**
+     * 播放歌曲。
+     * Play a song.
+     *
+     * @author Fan Xinkang
+     * @since version 6.1.1
+     */
     private static void playASong() {
         File resourcesDir = new File("src/MusicPlayer/resources");
         File[] files = resourcesDir.listFiles((dir, name) -> name.endsWith(".txt"));
@@ -277,8 +284,6 @@ public class Menu {
             printlnRandomColor("Error playing song: " + e.getMessage());
         }
     }
-
-
 }
 /*
  * End of userInterface.Menu Class.
