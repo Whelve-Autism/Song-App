@@ -1,0 +1,45 @@
+此份文件用于此 App 的说明：
+首先，感谢你使用我们设计的 App，接下来是对此详细的使用说明：
+目录是一份菜单，包含选项1-13、20-21，共15个功能：1、添加歌曲；2、列出所有歌曲；3、更新歌曲；4、删除歌曲；5、设置一首歌的歌手认证状态；6、通过索引寻找歌曲；7、通过歌名寻找歌曲；8、向播放器点赞；9、列出所有已认证歌手的所有歌曲；10、列出超过给定长度的所有歌曲；11、列出给定歌手的所有歌曲；12、打印所有歌曲的平均长度；13、打印所有歌曲的总长度；20、保存；21、加载。
+1、添加歌曲：输入的数据经过验证，不在范围内则被截取或显示为默认值。
+2、列出所有歌曲：列出录入、修改、删除操作后的所有歌曲。
+3、更新歌曲：输入的新数据同样经过验证，不在范围内则更新无效。
+4、删除歌曲：选择一首歌曲进行删除操作（此操作不能撤销）。
+5、设置一首歌的歌手验证状态：输入以 'y' 开头的字符串代表已验证，否则代表未认证。
+6、通过索引寻找歌曲：数组索引从0开始，返回的歌曲对应的序号是输入的数字+1；
+7、通过歌名寻找歌曲：返回相同歌名的歌曲（不区分大小写）。
+8、向播放器点赞：设置播放器的点赞数，超出范围则显示默认值。
+9、列出所有已认证歌手的所有歌曲：根据先前输入的已认证的歌手，列出其所有歌曲。
+10、列出超过给定长度的所有歌曲：输入一个长度，列出超出给定长度的所有歌曲。
+11、列出给定歌手的所有歌曲：输入一个歌手，列出该歌手的所有歌曲。
+12、打印所有歌曲的平均长度。
+13、打印所有歌曲的总长度。
+20、保存。
+21、加载。
+注意：根据题意，播放器中的 Description 无法对其进行操作。
+最后，再次感谢您使用我们设计的 App，祝您工作顺利、生活愉快。
+参考资料：《Java 从入门到精通》、豆包（save() 和 load())。
+开发者：樊心康、徐诗怡、陆思羽。
+
+This document is used for the description of this App:
+First of all, thank you for using the App we designed. Next is the detailed instructions for using it:
+The catalog is a menu, including options 1-13, 20-21, a total of 15 functions: 1. Add songs; 2. List all songs; 3. Update songs; 4. Delete songs; 5. Set the singer authentication status of a song; 6. Find songs through indexing; 7. Find songs by song titles; 8. To Player likes; 9. List all songs of all certified singers; 10. List all songs exceeding a given length; 11. List all songs of a given singer; 12. Print the average length of all songs; 13. Print the total length of all songs; 20. Save; 21. Load.
+1. Add songs: The input data has been verified, and if it is not within the scope, it will be intercepted or displayed as the default value.
+2. List all songs: List all songs after input, modification and deletion.
+3. Update the song: The new data entered has also been verified, and the update is invalid if it is not within the scope.
+4. Delete the song: Select a song to delete it (this operation cannot be undoed).
+5. Set the singer verification status of a song: Enter a string starting with 'y' to indicate that it has been verified, otherwise it means that it has not been authenticated.
+6. Find songs through index: the array index starts from 0, and the serial number corresponding to the returned song is the input number +1.
+7. Search for songs by song title: return songs with the same song title (case-insensitive).
+8. Like the player: Set the number of likes of the player, and the default value will be displayed if it exceeds the range.
+9. List all the songs of all certified singers: List all their songs according to the previously entered certified singers.
+10. List all songs that exceed a given length: enter a length and list all songs that exceed a given length.
+11. List all the songs of a given singer: enter a singer and list all the songs of the singer.
+12. Print the average length of all songs.
+13. Print the total length of all songs.
+20. Save.
+21. Loading.
+Note: According to the meaning of the question, the Description in the player cannot be operated.
+Finally, thank you again for using the App we designed. I wish you a smooth work and a happy life.
+Reference materials: "Java from Introduction to Proficiency", doubao (save() and load()).
+Developers: Fan Xinkang, Xu Shiyi, Lu Siyu.

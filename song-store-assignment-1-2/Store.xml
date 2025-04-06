@@ -1,0 +1,9 @@
+<playlist>
+  <playlistName>My Playlist</playlistName>
+  <songs/>
+  <description>My Playlist Description</description>
+  <likes>0</likes>
+  <descriptionSet>true</descriptionSet>
+  <playlistNameSet>true</playlistNameSet>
+  <addLikeSet>false</addLikeSet>
+</playlist>
